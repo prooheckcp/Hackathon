@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Activities.HomePage">
 
+    <!-- Holder for the fragments -->
+    <FrameLayout
+        android:id="@+id/main_fragment_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_above="@+id/bottom_nav_bar"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
+
+    <!-- Handle the navigation bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        tools:ignore="MissingConstraints" />
+    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

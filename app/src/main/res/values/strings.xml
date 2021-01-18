@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Hackathon</string>
 
+    <!--Menu windows-->
+    <string name="Notes">Notes</string>
+    <string name="Schedule">Schedule</string>
+    <string name="Settings">Settings</string>
+    <!--////////////-->
 </resources>
