@@ -1,5 +1,6 @@
 package com.example.hackathon.Activities
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,32 +17,10 @@ import kotlinx.android.synthetic.main.activity_home_page.*
 
 class HomePage : AppCompatActivity() {
 
-    lateinit var newNoteBox : MaterialAlertDialogBuilder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
-
-        val input = EditText(this)
-        input.hint = "Insert note name"
-        input.setTextColor(Color.BLACK);
-        input.textSize = 16f
-
-        //Create the dialog box for the note||
-            newNoteBox = MaterialAlertDialogBuilder(this)
-            newNoteBox.setTitle("New note")
-            newNoteBox.setView(input)
-            newNoteBox.setMessage("Do you wish to create a new node?")
-            newNoteBox.setPositiveButton("Create"){dialog, which ->
-                if(input.text.isNotEmpty()){
-                    DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count() + 1,input.text.toString(), null))
-                }else{
-                    notification("Note name cannot be empty")
-                }
-            }
-            newNoteBox.setNegativeButton("Cancel"){_,_->}
-        //__________________________________||
-
 
         //Start in this notes
         fragmentManager(HomeScreen())
@@ -95,7 +74,33 @@ class HomePage : AppCompatActivity() {
         }
     }
 
+    fun moveToDrawingRoom(){
+        val intent = Intent(this, NoteDrawing::class.java)
+        startActivity(intent)
+    }
+
     fun createNewNote(){
+
+        val input = EditText(this)
+        input.hint = "Insert note name"
+        input.setTextColor(Color.BLACK);
+        input.textSize = 16f
+
+        //Create the dialog box for the note||
+        var newNoteBox = MaterialAlertDialogBuilder(this)
+        newNoteBox.setTitle("New note")
+        newNoteBox.setView(input)
+        newNoteBox.setMessage("Do you wish to create a new node?")
+        newNoteBox.setPositiveButton("Create"){dialog, which ->
+            if(input.text.isNotEmpty()){
+                DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count() + 1,input.text.toString(), null))
+                fragmentManager(Notes())
+            }else{
+                notification("Note name cannot be empty")
+            }
+        }
+        newNoteBox.setNegativeButton("Cancel"){_,_->}
+        //__________________________________||
         newNoteBox.show()
     }
 

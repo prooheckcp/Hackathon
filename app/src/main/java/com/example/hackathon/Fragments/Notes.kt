@@ -1,5 +1,6 @@
 package com.example.hackathon.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.Activities.HomePage
+import com.example.hackathon.Activities.NoteDrawing
 import com.example.hackathon.Adapters.NotesRecyclerAdapter
 import com.example.hackathon.Fragments.dummy.DummyContent
+import com.example.hackathon.Objects.DataHandler
 import com.example.hackathon.R
 import kotlinx.android.synthetic.main.fragment_notes_list.*
 
@@ -31,13 +34,11 @@ class Notes: Fragment(R.layout.fragment_home_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Inflate on the adapter||
+        addNotesAdapter()
 
-            adapter = NotesRecyclerAdapter(DummyContent.ITEMS)
-            notesList.adapter = adapter
-            val layoutManager = LinearLayoutManager(HomePage())
-            notesList.layoutManager = layoutManager
-        //______________________||
+        //Handle the recycle viewer clicker||
+
+        //_________________________________||
 
         //Someone clicked on the create a new button
         noteCreateButton.setOnClickListener {
@@ -46,6 +47,22 @@ class Notes: Fragment(R.layout.fragment_home_screen) {
 
     }
 
+    fun addNotesAdapter(){
+        //Inflate on the adapter||
+
+        adapter = NotesRecyclerAdapter(DummyContent.ITEMS){itemData ->
+
+            //Store the note
+            DataHandler.currentNote = itemData
+
+            //Start the intent
+            (activity as HomePage).moveToDrawingRoom()
+        }
+        notesList.adapter = adapter
+        val layoutManager = LinearLayoutManager(HomePage())
+        notesList.layoutManager = layoutManager
+        //______________________||
+    }
 
 
 }
