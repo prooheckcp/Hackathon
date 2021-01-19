@@ -3,6 +3,7 @@ package com.example.hackathon.Activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.hackathon.Fragments.Notes
 import com.example.hackathon.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -11,7 +12,8 @@ class HomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
 
-        
+        //Start in this notes
+        fragmentManager(Notes())
 
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when(item.itemId) {
@@ -21,6 +23,7 @@ class HomePage : AppCompatActivity() {
                 }
                 R.id.page_2 -> {
                     // Respond to the notes tab
+                    fragmentManager(Notes())
                     true
                 }
                 R.id.page_3 ->{
