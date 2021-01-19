@@ -14,9 +14,13 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/schoolars"
+        app:tint="#BE0E0E0E"
+        app:tintMode="src_over"
         tools:srcCompat="@drawable/schoolars" />
 
     <TextView
@@ -24,12 +28,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/covelege"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/baseline_school_white_48dp"
+        android:contentDescription="@string/iconSplashDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
