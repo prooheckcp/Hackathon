@@ -5,5 +5,7 @@
     <string name="Notes">Notes</string>
     <string name="Schedule">Schedule</string>
     <string name="Settings">Settings</string>
+    <string name="todo">TODO</string>
+    <string name="covelege">Covelege</string>
     <!--////////////-->
 </resources>
