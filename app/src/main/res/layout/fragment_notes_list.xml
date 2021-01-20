@@ -67,14 +67,16 @@
 
     <ImageView
         android:id="@+id/noteCreateButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:src="@drawable/plus_box"
+        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/topbarElement"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cross_icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

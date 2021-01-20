@@ -5,5 +5,6 @@ import com.example.hackathon.Fragments.dummy.DummyContent
 object DataHandler {
 
     var currentNote: DummyContent.NoteItem? = null
+    var lastwindow : Int = 0
 
 }
