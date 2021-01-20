@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
+import com.example.hackathon.Objects.DataHandler
 import com.example.hackathon.R
 import kotlin.math.abs
 
@@ -111,6 +112,18 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private fun touchUp() {
         // Reset the path so it doesn't get drawn again.
         path.reset()
+    }
+
+    fun setCorrectBitmap(){
+        if(DataHandler.currentNote?.hashMap != null){
+            extraBitmap = DataHandler.currentNote!!.hashMap!!
+            println("caralho")
+            invalidate()
+        }
+    }
+
+    fun getbitmap(): Bitmap {
+        return extraBitmap
     }
 
 

@@ -79,6 +79,7 @@ class HomePage : AppCompatActivity() {
         startActivity(intent)
     }
 
+
     fun createNewNote(){
 
         val input = EditText(this)
@@ -92,11 +93,13 @@ class HomePage : AppCompatActivity() {
         newNoteBox.setView(input)
         newNoteBox.setMessage("Do you wish to create a new node?")
         newNoteBox.setPositiveButton("Create"){dialog, which ->
-            if(input.text.isNotEmpty()){
+            if(input.text.isNotEmpty() && input.text.length < 12){
                 DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count() + 1,input.text.toString(), null))
                 fragmentManager(Notes())
-            }else{
+            }else if(input.text.isEmpty()){
                 notification("Note name cannot be empty")
+            }else{
+                notification("The name is too long")
             }
         }
         newNoteBox.setNegativeButton("Cancel"){_,_->}
