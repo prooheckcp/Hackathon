@@ -75,7 +75,7 @@ class HomePage : AppCompatActivity() {
         newNoteBox.setMessage("Do you wish to create a new node?")
         newNoteBox.setPositiveButton("Create"){dialog, which ->
             if(input.text.isNotEmpty() && input.text.length < 12){
-                DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count() + 1,input.text.toString(), null))
+                DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count(),input.text.toString(), null))
                 fragmentManager(Notes())
             }else if(input.text.isEmpty()){
                 notification("Note name cannot be empty")

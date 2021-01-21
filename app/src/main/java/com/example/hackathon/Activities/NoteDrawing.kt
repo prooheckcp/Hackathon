@@ -47,11 +47,20 @@ class NoteDrawing : AppCompatActivity() {
 
 
                             //Delete the note and move to the main screen||
-                                DummyContent.ITEMS.removeAt(DataHandler.currentNote!!.id - 1)
+                                DummyContent.ITEMS.removeAt(DataHandler.currentNote!!.id)
                                 DataHandler.lastwindow = 1
                                 val intent = Intent(this, HomePage::class.java)
                                 startActivity(intent)
                             //___________________________________________||
+
+                            //Fix the IDs||
+
+                                var i : Int = 0
+                                for (item in DummyContent.ITEMS){
+                                    item.id = i
+                                    i++
+                                }
+                            //___________||
                         }
                         .setNegativeButton("Cancel"){_,_->}
                         .show()
@@ -67,7 +76,8 @@ class NoteDrawing : AppCompatActivity() {
 
     fun saveNote(){
         val bitmapToSave : Bitmap = drawingCanvas.getbitmap()
-        DummyContent.ITEMS[DataHandler.currentNote!!.id - 1].hashMap = bitmapToSave
+        println(DataHandler.currentNote!!.id )
+        DummyContent.ITEMS[DataHandler.currentNote!!.id ].hashMap = bitmapToSave
 
     }
 
