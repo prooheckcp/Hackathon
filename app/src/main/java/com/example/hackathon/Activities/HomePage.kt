@@ -60,6 +60,10 @@ class HomePage : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun moveToWeekDays(){
+        val intent = Intent(this, weekDays::class.java)
+        startActivity(intent)
+    }
 
     fun createNewNote(){
 
