@@ -10,6 +10,7 @@ import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import com.example.hackathon.Objects.DataHandler
 import com.example.hackathon.R
+import java.io.ByteArrayOutputStream
 import kotlin.math.abs
 
 class canvas @JvmOverloads
@@ -19,11 +20,13 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private val strokeSize = 12f // has to be float
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
+    lateinit var bitmapHolder : Bitmap
+
 
     private lateinit var frame: Rect
 
 
-    private val backgroundColor = ResourcesCompat.getColor(resources, R.color.red, null)
+    private val backgroundColor = Color.TRANSPARENT
 
     private var motionTouchEventX = 0f
     private var motionTouchEventY = 0f
@@ -62,13 +65,16 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
         if (::extraBitmap.isInitialized) extraBitmap.recycle()
-        extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-        extraCanvas = Canvas(extraBitmap)
-        //extraCanvas.drawColor(backgroundColor)
 
-        // Calculate a rectangular frame around the picture.
-        val inset = 40
-        frame = Rect(inset, inset, width - inset, height - inset)
+        extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+
+        if(::bitmapHolder.isInitialized){
+            extraBitmap = Bitmap.createBitmap(bitmapHolder)
+        }
+
+        extraCanvas = Canvas(extraBitmap)
+        extraCanvas.drawColor(backgroundColor)
 
     }
 
@@ -116,14 +122,34 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
     fun setCorrectBitmap(){
         if(DataHandler.currentNote?.hashMap != null){
-            extraBitmap = DataHandler.currentNote!!.hashMap!!
-            println("caralho")
-            invalidate()
+
+            val holdBitmap : Bitmap = DataHandler.currentNote!!.hashMap!!
+
+            bitmapHolder =  holdBitmap.copy(Bitmap.Config.ARGB_8888, true)
+
+            this.invalidate()
         }
     }
 
+    private fun canvasClear(){
+        extraBitmap.eraseColor(backgroundColor)
+    }
+
+    fun canvasReset(){
+        canvasClear()
+        this.invalidate()
+    }
+
     fun getbitmap(): Bitmap {
-        return extraBitmap
+        var baos = ByteArrayOutputStream()
+        extraBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        var imageBytes : ByteArray = baos.toByteArray()
+        baos.close()
+        val decodedBitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+
+        println(decodedBitmap)
+
+        return decodedBitmap
     }
 
 

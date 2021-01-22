@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackathon">
-        <activity android:name=".Activities.NoteDrawing"></activity>
+        <activity android:name=".Activities.weekDays"></activity>
+        <activity android:name=".Activities.NoteDrawing" />
         <activity android:name=".Activities.HomePage" />
         <activity android:name=".Activities.SplashScreen">
             <intent-filter>

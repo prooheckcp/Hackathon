@@ -6,17 +6,119 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/windowTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HomeScreen"
-        android:textSize="36sp"
+    <ImageView
+        android:id="@+id/mainBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/calendar_background"
+        android:tint="#00000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/darkBackground"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="124dp"
+        android:tint="#E6000000"
+        app:layout_constraintEnd_toEndOf="@+id/mainBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainBackground"
+        app:srcCompat="@android:drawable/screen_background_light" />
+
+    <ImageView
+        android:id="@+id/nextClassBackground"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="120dp"
+        android:scaleType="centerCrop"
+        android:tint="#99000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainBackground"
+        app:srcCompat="@drawable/classroom_background" />
+
+    <TextView
+        android:id="@+id/nextClassLap2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Next class:"
+        android:textColor="#000000"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="@+id/nextClassBackground"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="@+id/nextClassBackground"
+        app:layout_constraintTop_toTopOf="@+id/nextClassBackground"
+        tools:text="Next class:" />
+
+    <TextView
+        android:id="@+id/nextClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Next class:"
+        android:textColor="#FFFFFF"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="@+id/nextClassBackground"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="@+id/nextClassBackground"
+        app:layout_constraintTop_toTopOf="@+id/nextClassBackground"
+        tools:text="Next class:" />
+
+    <TextView
+        android:id="@+id/classNameBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Maths"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/nextClassLap2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nextClassLap2"
+        app:layout_constraintTop_toBottomOf="@+id/nextClassLap2"
+        tools:text="Maths" />
+
+    <TextView
+        android:id="@+id/className"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Maths"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/nextClassLap2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nextClassLap2"
+        app:layout_constraintTop_toBottomOf="@+id/nextClassLap2"
+        tools:text="Maths" />
+
+    <Button
+        android:id="@+id/editSchedule"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:fontFamily="sans-serif-black"
+        android:text="🔨Edit Schedule🔨"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

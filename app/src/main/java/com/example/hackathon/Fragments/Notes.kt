@@ -54,7 +54,6 @@ class Notes: Fragment(R.layout.fragment_home_screen) {
 
             //Store the note
             DataHandler.currentNote = itemData
-
             //Start the intent
             (activity as HomePage).moveToDrawingRoom()
         }

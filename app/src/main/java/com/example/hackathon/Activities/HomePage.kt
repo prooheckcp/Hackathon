@@ -10,6 +10,7 @@ import com.example.hackathon.Fragments.HomeScreen
 import com.example.hackathon.Fragments.Notes
 import com.example.hackathon.Fragments.Settings
 import com.example.hackathon.Fragments.dummy.DummyContent
+import com.example.hackathon.Objects.DataHandler
 import com.example.hackathon.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -22,9 +23,13 @@ class HomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
 
-        //Start in this notes
-        fragmentManager(HomeScreen())
+        //Check on which fragment should the app start
+        when(DataHandler.lastwindow){
+            0->{fragmentManager(HomeScreen())}
+            1->{fragmentManager(Notes())}
+        }
 
+        //Add the listener for the navigation bar
         bottom_nav_bar.setOnNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.page_1 ->{
@@ -41,30 +46,6 @@ class HomePage : AppCompatActivity() {
             true
         }
 
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.page_1 -> {
-                    //Respond to the main homepage
-                    println("He clicked on the schedule")
-                    fragmentManager(HomeScreen())
-                    true
-                }
-                R.id.page_2 -> {
-                    // Respond to the notes tab
-                    fragmentManager(Notes())
-                    true
-                }
-                R.id.page_3 ->{
-                    //Respond to settings tab
-
-                    true
-                }
-                else -> false
-            }
-        }
-
-
-
     }
 
     private fun fragmentManager(fragment: Fragment):Unit{
@@ -79,6 +60,10 @@ class HomePage : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun moveToWeekDays(){
+        val intent = Intent(this, weekDays::class.java)
+        startActivity(intent)
+    }
 
     fun createNewNote(){
 
@@ -94,7 +79,7 @@ class HomePage : AppCompatActivity() {
         newNoteBox.setMessage("Do you wish to create a new node?")
         newNoteBox.setPositiveButton("Create"){dialog, which ->
             if(input.text.isNotEmpty() && input.text.length < 12){
-                DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count() + 1,input.text.toString(), null))
+                DummyContent.ITEMS.add(DummyContent.NoteItem(DummyContent.ITEMS.count(),input.text.toString(), null))
                 fragmentManager(Notes())
             }else if(input.text.isEmpty()){
                 notification("Note name cannot be empty")

@@ -10,8 +10,8 @@ object DummyContent {
         var currentTime: Date = Calendar.getInstance().time
     }
     val ITEMS: MutableList<NoteItem> = arrayListOf(
-        NoteItem(1,"Some note", null),
-        NoteItem(2,"Another Note", null)
+        NoteItem(0,"Some note", null),
+        NoteItem(1,"Another Note", null)
     )
 
 
