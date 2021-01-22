@@ -1,6 +1,5 @@
 package com.example.hackathon.Fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.Activities.HomePage
-import com.example.hackathon.Activities.NoteDrawing
 import com.example.hackathon.Adapters.NotesRecyclerAdapter
 import com.example.hackathon.Fragments.dummy.DummyContent
 import com.example.hackathon.Objects.DataHandler

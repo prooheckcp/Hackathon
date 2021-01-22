@@ -20,6 +20,9 @@ class Settings : Fragment(R.layout.fragment_settings) {
         //  checkboxMemory = view?.findViewById(R.id.checkB
         print(checkBox)
         checkboxMemory = checkBox
+
+
+
     }
 
    /*     println("work")
@@ -29,7 +32,6 @@ class Settings : Fragment(R.layout.fragment_settings) {
         //println(checkboxMemory == null)
        // checkboxMemory.
     }*/
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
