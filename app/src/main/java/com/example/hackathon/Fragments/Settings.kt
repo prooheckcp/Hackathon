@@ -7,59 +7,45 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
+import com.example.hackathon.Objects.SettingsObject
 import com.example.hackathon.R
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 class Settings : Fragment(R.layout.fragment_settings) {
-    var isHolliday : Boolean = false;
-    var checkboxMemory : CheckBox? = checkBox;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("work")
+        //   println("work")
         //  checkboxMemory = view?.findViewById(R.id.checkB
-        print(checkBox)
-        checkboxMemory = checkBox
-
-
-
+        //   println(checkBox)
+        // println(switch2)
     }
 
-   /*     println("work")
-      //  checkboxMemory = view?.findViewById(R.id.checkBox);
-     print(checkBox)
-        checkboxMemory = checkBox
-        //println(checkboxMemory == null)
-       // checkboxMemory.
-    }*/
+    /*     println("work")
+       //  checkboxMemory = view?.findViewById(R.id.checkBox);
+      print(checkBox)
+         checkboxMemory = checkBox
+         //println(checkboxMemory == null)
+        // checkboxMemory.
+     }*/
+
+    override fun onResume() {
+        super.onResume()
+        switch1.isChecked = SettingsObject.isHollidays
+
+        switch1.setOnCheckedChangeListener {buttonView, isChecked ->
+            SettingsObject.isHollidays = isChecked
+
+
+        }
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-       // checkboxMemory?.isChecked = true;
-     //   checkboxMemory = checkBox
-
-
-        println(checkboxMemory == null)
-
-        checkboxMemory?.isChecked = true;
-        fun onCheckboxClicked(view: View) {
-            if (view is CheckBox) {
-                val checked: Boolean = view.isChecked
-                when (view.id) {
-                    R.id.checkBox -> {
-                        if (checked) {
-                            isHolliday = true;
-                        } else {
-                            isHolliday = true;
-                        }
-                    }
-                }
-
-            }
-        }
-
+        // checkboxMemory?.isChecked = true;
+        //   checkboxMemory = checkBox
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
