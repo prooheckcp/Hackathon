@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Activities.schedulesList">
 
+
+    <!--Background-->
+    <ImageView
+        android:id="@+id/classesBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/someprettyclassroombackground"
+        android:tint="#66000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/topbarElement"
         android:layout_width="0dp"
@@ -29,6 +43,19 @@
         app:layout_constraintEnd_toEndOf="@+id/topbarElement"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/addClassButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/cross_icon"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarElement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cross_icon" />
 
     <ImageView
         android:id="@+id/goBackButtonSchedule"
