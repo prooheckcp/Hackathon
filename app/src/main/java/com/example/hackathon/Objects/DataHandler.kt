@@ -14,12 +14,26 @@ object DataHandler {
     //This is your schedule divided by week days
     val yourSchedule : Map<String, MutableList<scheduleClass>> = mapOf(
         "Monday" to mutableListOf(
-            scheduleClass(12,16, "Maths", "www.google.com")
+            scheduleClass(8,11, "Game Frameworks", "www.google.com"),
+            scheduleClass(11,14, "Math, Physics and Games II", "www.google.com")
         ),
-        "Tuesday" to mutableListOf(),
-        "Wednesday" to mutableListOf(),
-        "Thursday" to mutableListOf(),
-        "Friday" to mutableListOf()
+        "Tuesday" to mutableListOf(
+            scheduleClass(9,10, "Game Frameworks", "www.google.com"),
+            scheduleClass(10,11, "Cooperative Learning", "www.google.com"),
+            scheduleClass(11,12, "Management of Game and Apps Projects", "www.google.com"),
+            scheduleClass(12,13, "Mobile Programming", "www.google.com"),
+            scheduleClass(13,14, "Math, Physics and Games II", "www.google.com")
+        ),
+        "Wednesday" to mutableListOf(
+            scheduleClass(9,10, "Cooperative Learning", "www.google.com"),
+            scheduleClass(10,13, "Multiplatform Project", "www.google.com")
+        ),
+        "Thursday" to mutableListOf(
+            scheduleClass(9,12, "Mobile Programming", "www.google.com"),
+        ),
+        "Friday" to mutableListOf(
+            scheduleClass(8,10, "Management of Game and Apps Projects", "www.google.com")
+        )
     )
 
     //This is a list with all of the days of the week

@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:tint="#33000000"
-        app:srcCompat="@drawable/notebook"
+        app:srcCompat="@drawable/class_layout"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
