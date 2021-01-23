@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:orientation="horizontal">
+
+    <!--Class name input-->
+    <!--
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timePicker">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/classNameInput2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Insert your class name" />
+    </com.google.android.material.textfield.TextInputLayout>
+    -->
+
+
+    <!--Time Picker start-->
+
+    <!-- Time picker end-->
+
+    <ImageView
+        android:id="@+id/topbarElement"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@android:drawable/screen_background_light"
+        android:tint="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/timePicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classLinkInput" />
+
+    <ImageView
+        android:id="@+id/topbarElement3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@android:drawable/screen_background_light"
+        android:tint="@color/red"
+        app:layout_constraintBottom_toBottomOf="@id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView4" />
+
+    <ImageView
+        android:id="@+id/topbarElement2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@android:drawable/screen_background_light"
+        android:tint="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/timePicker2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="215dp"
+        android:layout_height="90dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TimePicker
+        android:id="@+id/timePicker2"
+        android:layout_width="215dp"
+        android:layout_height="90dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <!--
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="someRandomTest"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker"
+        app:layout_constraintVertical_bias="1.0" />
+
+        -->
+
+
+    <!--
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:hint="Insert class name..."
+        android:imeOptions="actionDone"
+
+        app:layout_constraintEnd_toEndOf="@+id/timePicker2"
+        app:layout_constraintStart_toStartOf="@+id/timePicker2"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker2">
+
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:hint="Insert classroom link..."
+        android:imeOptions="actionDone"
+        app:layout_constraintEnd_toEndOf="@+id/timePicker2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/timePicker2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText">
+
+    </com.google.android.material.textfield.TextInputEditText>
+
+-->
+
+    <EditText
+        android:id="@+id/classNameInput"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:hint="Insert Class Name..."
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="@+id/timePicker"
+        app:layout_constraintStart_toStartOf="@+id/timePicker"
+        app:layout_constraintTop_toBottomOf="@id/topbarElement3"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/classLinkInput"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:hint="Insert Class Link..."
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="@+id/timePicker"
+        app:layout_constraintStart_toStartOf="@+id/timePicker"
+        app:layout_constraintTop_toBottomOf="@id/classNameInput"></EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Starting Hour:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classLinkInput" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Class Details:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Ending Hour:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

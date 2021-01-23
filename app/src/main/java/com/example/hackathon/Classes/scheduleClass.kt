@@ -1,5 +1,4 @@
 package com.example.hackathon.Classes
 
-import java.time.DayOfWeek
 
-class scheduleClass(var startingHour: Int, var endingHour : Int, var className: String, var classLink : String)
+class scheduleClass(var startingHour: Int, var startingMinute: Int, var endingHour : Int, var endingMinute: Int, var className: String, var classLink : String)
