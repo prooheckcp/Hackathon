@@ -18,10 +18,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Topbar-->
+    <ImageView
+        android:id="@+id/topbarElement"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:src="@android:drawable/screen_background_light"
+        android:tint="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Notes viewer-->
+
+    <TextView
+        android:id="@+id/windowTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="Your Schedule"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarElement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/darkBackground"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:layout_width="380dp"
+        android:layout_height="165dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="124dp"
@@ -33,8 +60,8 @@
 
     <ImageView
         android:id="@+id/nextClassBackground"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:layout_width="380dp"
+        android:layout_height="165dp"
         android:layout_marginTop="120dp"
         android:scaleType="centerCrop"
         android:tint="#99000000"
@@ -87,7 +114,7 @@
         android:fontFamily="sans-serif-black"
         android:text="Maths"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/nextClassLap2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nextClassLap2"
@@ -102,7 +129,7 @@
         android:fontFamily="sans-serif-black"
         android:text="Maths"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/nextClassLap2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nextClassLap2"
@@ -119,6 +146,135 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/classDataPanel"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="50dp"
+        android:tint="#050505"
+        app:layout_constraintBottom_toBottomOf="@+id/classStatus"
+        app:layout_constraintEnd_toEndOf="@+id/nextClassBackground"
+        app:layout_constraintStart_toStartOf="@+id/darkBackground"
+        app:layout_constraintTop_toBottomOf="@+id/nextClassBackground"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <ImageView
+        android:id="@+id/topbarElement4"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:src="@android:drawable/screen_background_light"
+        android:tint="@color/red"
+        app:layout_constraintEnd_toEndOf="@+id/nextClassLink"
+        app:layout_constraintStart_toStartOf="@+id/classDataPanel"
+        app:layout_constraintTop_toTopOf="@+id/classDataPanel" />
+
+    <TextView
+        android:id="@+id/windowTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="Next Class Details"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarElement4"
+        app:layout_constraintEnd_toEndOf="@+id/topbarElement4"
+        app:layout_constraintStart_toStartOf="@+id/topbarElement4"
+        app:layout_constraintTop_toTopOf="@+id/classDataPanel" />
+
+    <TextView
+        android:id="@+id/windowTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="Link:"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/classDataPanel"
+        app:layout_constraintTop_toBottomOf="@+id/topbarElement4" />
+
+    <TextView
+        android:id="@+id/windowTitle4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="Hour:"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/classDataPanel"
+        app:layout_constraintTop_toBottomOf="@+id/windowTitle3" />
+
+    <TextView
+        android:id="@+id/windowTitle6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="Status:"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/classDataPanel"
+        app:layout_constraintTop_toBottomOf="@+id/windowTitle4" />
+
+    <TextView
+        android:id="@+id/classStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="N/A"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/windowTitle6"
+        app:layout_constraintStart_toEndOf="@+id/windowTitle6"
+        app:layout_constraintTop_toTopOf="@+id/windowTitle6" />
+
+    <TextView
+        android:id="@+id/classRommHourView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_vertical"
+        android:text="N/A"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/windowTitle4"
+        app:layout_constraintEnd_toEndOf="@+id/classDataPanel"
+        app:layout_constraintStart_toEndOf="@+id/windowTitle4"
+        app:layout_constraintTop_toTopOf="@+id/windowTitle4" />
+
+    <TextView
+        android:id="@+id/nextClassLink"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text="N/A"
+        android:textColor="#6BA3FF"
+        android:textColorLink="#FFFFFF"
+        android:textScaleX="1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/windowTitle3"
+        app:layout_constraintEnd_toEndOf="@+id/classDataPanel"
+        app:layout_constraintStart_toEndOf="@+id/windowTitle3"
+        app:layout_constraintTop_toTopOf="@+id/windowTitle3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

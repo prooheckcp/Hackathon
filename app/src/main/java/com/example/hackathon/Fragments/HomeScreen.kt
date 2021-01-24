@@ -1,6 +1,8 @@
 package com.example.hackathon.Fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import com.example.hackathon.Activities.HomePage
 import com.example.hackathon.Classes.scheduleClass
 import com.example.hackathon.Objects.DataHandler
 import com.example.hackathon.Objects.DataHandler.yourSchedule
+import com.example.hackathon.Objects.Functions
 import com.example.hackathon.Objects.SettingsObject.isHollidays
 import com.example.hackathon.R
 import kotlinx.android.synthetic.main.fragment_home_screen.*
@@ -19,6 +22,13 @@ import kotlin.time.hours
 import kotlin.time.minutes
 
 class HomeScreen: Fragment(R.layout.fragment_home_screen) {
+
+    //Variables||
+    var nextClassWeekday : String? = null
+    var nextClassNumber : Int? = null
+    //_________||
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View?
     {
@@ -54,23 +64,65 @@ class HomeScreen: Fragment(R.layout.fragment_home_screen) {
 
             className.text = "You have no\nfollowing classes"
             classNameBackground.text = "You have no\nfollowing classes"
+
+            //Set the display card image
+            nextClassBackground.setImageResource(R.drawable.classroom_background)
+
         }else if(isHollidays){
+
             //Change display to holidays mode
             className.text = "You are in holidays\nmode"
             classNameBackground.text = "You are in holidays\nmode"
+            nextClassBackground.setImageResource(R.drawable.beach_background)
         }else{
 
-            fun setNextClassInfo(toDisplayObject :scheduleClass?){
-                className.text = toDisplayObject?.className
-                classNameBackground.text = toDisplayObject?.className
-            }
-
+            //Set the display card image
+            nextClassBackground.setImageResource(R.drawable.classroom_background)
 
             //Calculate the next class
-            var currentCalendar : Calendar = Calendar.getInstance()
+            val currentCalendar : Calendar = Calendar.getInstance()
             val currentDay = currentCalendar.get(Calendar.DAY_OF_WEEK)
             val currentHour = currentCalendar.get(Calendar.HOUR_OF_DAY)
             val currentMinute = currentCalendar.get(Calendar.MINUTE)
+
+
+            fun setNextClassInfo(toDisplayObject :scheduleClass?){
+
+                //Set the class name
+                className.text = toDisplayObject?.className
+                classNameBackground.text = toDisplayObject?.className
+
+                //Set the class link
+                nextClassLink.setOnClickListener{
+                    val siteIntent = Intent("android.intent.action.VIEW",
+                            Uri.parse("http://${toDisplayObject?.classLink}"));
+                        startActivity(siteIntent);
+                }
+
+                //Set the class hours
+                if(toDisplayObject != null){
+                    classRommHourView.text = Functions.convertTimeFormat(toDisplayObject!!.startingHour, toDisplayObject!!.startingMinute, toDisplayObject!!.endingHour, toDisplayObject!!.endingMinute)
+
+                    if(nextClassNumber == currentDay){
+
+                        if(toDisplayObject.startingHour < currentHour || (toDisplayObject.startingHour == currentHour && toDisplayObject.startingMinute <= toDisplayObject.startingMinute)  ){
+                            classStatus.text = "Class in progress"
+                        }else{
+                            classStatus.text = "Today in " + ((toDisplayObject.startingHour * 60 + toDisplayObject.startingMinute ) - (currentHour * 60 + currentMinute) ) + " minutes"
+                        }
+                    }else{
+                        //The class is in the future
+                        classStatus.text = "Scheduled for " + nextClassWeekday
+                    }
+
+                }else{
+                    classRommHourView.text = "N/A"
+
+                }
+
+                //Set the class status
+
+            }
 
             //Check if u have anymore classes today
             val hasFirstDayClass: scheduleClass? = checkIfClass(currentDay, currentHour, currentMinute)
@@ -132,11 +184,31 @@ class HomeScreen: Fragment(R.layout.fragment_home_screen) {
         }
 
         when(currentWeekDay){
-            Calendar.MONDAY->{loopData(yourSchedule["Monday"]!!)}
-            Calendar.TUESDAY->{loopData(yourSchedule["Tuesday"]!!)}
-            Calendar.WEDNESDAY->{loopData(yourSchedule["Wednesday"]!!)}
-            Calendar.THURSDAY->{loopData(yourSchedule["Thursday"]!!)}
-            Calendar.FRIDAY->{loopData(yourSchedule["Friday"]!!)}
+            Calendar.MONDAY->{
+                loopData(yourSchedule["Monday"]!!)
+                nextClassWeekday = "Monday"
+                nextClassNumber = Calendar.MONDAY
+            }
+            Calendar.TUESDAY->{
+                loopData(yourSchedule["Tuesday"]!!)
+                nextClassWeekday = "Tuesday"
+                nextClassNumber = Calendar.TUESDAY
+            }
+            Calendar.WEDNESDAY->{
+                loopData(yourSchedule["Wednesday"]!!)
+                nextClassWeekday = "Wednesday"
+                nextClassNumber = Calendar.WEDNESDAY
+            }
+            Calendar.THURSDAY->{
+                loopData(yourSchedule["Thursday"]!!)
+                nextClassWeekday = "Thursday"
+                nextClassNumber = Calendar.THURSDAY
+            }
+            Calendar.FRIDAY->{
+                loopData(yourSchedule["Friday"]!!)
+                nextClassWeekday = "Friday"
+                nextClassNumber = Calendar.FRIDAY
+            }
         }
 
         return returnValue

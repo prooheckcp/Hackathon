@@ -19,18 +19,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/settings_background" />
 
+    <!--Topbar-->
+    <ImageView
+        android:id="@+id/topbarElement"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:src="@android:drawable/screen_background_light"
+        android:tint="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/windowTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
         android:text="Settings"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarElement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/switch1"
@@ -38,23 +49,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Hollidays mode"
         android:textColor="#FFFFFF"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/mainBackground"
-        app:layout_constraintTop_toTopOf="@+id/mainBackground"
+        app:layout_constraintTop_toBottomOf="@+id/topbarElement"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="507dp"
         android:text="Wipe Data"
-        app:layout_constraintStart_toStartOf="@+id/mainBackground"
-        app:layout_constraintTop_toTopOf="@+id/mainBackground" />
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="507dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
