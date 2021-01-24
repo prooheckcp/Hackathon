@@ -76,6 +76,8 @@ class HomeScreen: Fragment(R.layout.fragment_home_screen) {
             nextClassBackground.setImageResource(R.drawable.beach_background)
         }else{
 
+            nextClassLink.text = "Click me!"
+
             //Set the display card image
             nextClassBackground.setImageResource(R.drawable.classroom_background)
 

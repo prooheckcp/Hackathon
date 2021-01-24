@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.example.hackathon.Classes.scheduleClass
 import com.example.hackathon.Fragments.HomeScreen
 import com.example.hackathon.Fragments.Notes
 import com.example.hackathon.Fragments.Settings
 import com.example.hackathon.Fragments.dummy.DummyContent
+import com.example.hackathon.Fragments.dummy.DummyContent.ITEMS
 import com.example.hackathon.Objects.DataHandler
+import com.example.hackathon.Objects.DataHandler.weekDayList
+import com.example.hackathon.Objects.DataHandler.yourSchedule
 import com.example.hackathon.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -98,6 +102,20 @@ class HomePage : AppCompatActivity() {
             .setTitle(message)
             .setItems(arrayOf("ok")){_,_->}
             .show()
+    }
+
+    fun wipeData(){
+        MaterialAlertDialogBuilder(this)
+                .setTitle("Delete all data")
+                .setMessage("This will wipe all the data from your phone. This includes both classes and notes.")
+                .setPositiveButton("Delete"){_,_->
+                    for(day in weekDayList){
+                        yourSchedule[day]?.clear()
+                    }
+                    ITEMS.clear()
+                }
+                .setNegativeButton("Cancel"){_,_->}
+                .show()
     }
 
 }
