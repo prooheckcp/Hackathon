@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -70,7 +71,7 @@ class schedulesList : AppCompatActivity() {
 
 
             newNoteBox.setView(newClassLayout)
-            newNoteBox.setPositiveButton("Create"){ dialog, which ->
+            newNoteBox.setPositiveButton("Add"){ dialog, which ->
                 val className : String = newClassLayout.findViewById<EditText>(R.id.classNameInput).text.toString()
                 val classLink : String = newClassLayout.findViewById<EditText>(R.id.classLinkInput).text.toString()
                 val startingHour = newClassLayout.findViewById<TimePicker>(R.id.timePicker).hour
@@ -92,9 +93,9 @@ class schedulesList : AppCompatActivity() {
                     ))
 
                     //Reset the adapter
-                    val intent = Intent(this, schedulesList::class.java)
-                    startActivity(intent)
-                    //classesAdapter()
+                    //val intent = Intent(this, schedulesList::class.java)
+                    //startActivity(intent)
+                    classesAdapter()
                 }
 
             }
@@ -114,6 +115,7 @@ class schedulesList : AppCompatActivity() {
 
     //Holds the adapter for the classes||
 
+        @RequiresApi(Build.VERSION_CODES.M)
         fun classesAdapter(){
             //Inflate on the adapter||
 
@@ -122,8 +124,65 @@ class schedulesList : AppCompatActivity() {
                 )
 
                 adapter = classesAdapter(daysClasses){ item->
-                    println(item.className)
+
+
+                    val newClassLayout = layoutInflater.inflate(R.layout.class_input_box, null, false)
+
+                    //Create the dialog box for the note||
+                    var newNoteBox = MaterialAlertDialogBuilder(this)
+
+
+                    //Set to the previous one
+                    newClassLayout.findViewById<EditText>(R.id.classNameInput).text = SpannableStringBuilder(item.className)
+                    newClassLayout.findViewById<EditText>(R.id.classLinkInput).text = SpannableStringBuilder(item.classLink)
+                    newClassLayout.findViewById<TimePicker>(R.id.timePicker).hour = item.startingHour
+                    newClassLayout.findViewById<TimePicker>(R.id.timePicker).minute = item.startingMinute
+                    newClassLayout.findViewById<TimePicker>(R.id.timePicker2).hour = item.endingHour
+                    newClassLayout.findViewById<TimePicker>(R.id.timePicker2).minute = item.endingMinute
+
+                    newNoteBox.setView(newClassLayout)
+                    newNoteBox.setPositiveButton("Update"){ dialog, which ->
+                        val className : String = newClassLayout.findViewById<EditText>(R.id.classNameInput).text.toString()
+                        val classLink : String = newClassLayout.findViewById<EditText>(R.id.classLinkInput).text.toString()
+                        val startingHour = newClassLayout.findViewById<TimePicker>(R.id.timePicker).hour
+                        val startingMinute = newClassLayout.findViewById<TimePicker>(R.id.timePicker).minute
+                        val endingHour = newClassLayout.findViewById<TimePicker>(R.id.timePicker2).hour
+                        val endingMinute = newClassLayout.findViewById<TimePicker>(R.id.timePicker).minute
+
+
+                        for(classuwu in yourSchedule[selectedWeekDay]!!){
+                            if(classuwu == item){
+                                classuwu.className = className
+                                classuwu.classLink = classLink
+                                classuwu.startingHour = startingHour
+                                classuwu.startingMinute = startingMinute
+                                classuwu.endingHour = endingHour
+                                classuwu.endingMinute = endingMinute
+                            }
+                        }
+
+                        classesAdapter()
+
+                    }
+                    newNoteBox.setNegativeButton("Delete"){_,_->
+                        yourSchedule[selectedWeekDay]?.remove(item)
+                        classesAdapter()
+                    }
+                    newNoteBox.setNeutralButton("Cancel"){ _, _->}
+                    //__________________________________||
+                    newNoteBox.show()
                 }
+
+
+
+
+
+
+
+
+
+
+
                 scheduleRecycler.adapter = adapter
                 val layoutManager = LinearLayoutManager(HomePage())
                 scheduleRecycler.layoutManager = layoutManager
