@@ -35,6 +35,7 @@ class schedulesList : AppCompatActivity() {
     //_________||
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         //Inflate the layout into the phone
